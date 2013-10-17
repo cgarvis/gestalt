@@ -1,0 +1,4 @@
+gestalt
+=======
+
+Configuration for Golang
