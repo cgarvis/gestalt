@@ -1,51 +1,50 @@
 package gestalt
 
 import (
-  "fmt"
-  "os"
-  "strconv"
-  "strings"
+	"os"
+	"strconv"
+	"strings"
 )
 
 type Config struct {
 }
 
 func (cfg *Config) Get(name string) string {
-  key := strings.ToUpper(name)
-  key = strings.Replace(key, ".", "_", -1)
-  return os.Getenv(key)
+	key := strings.ToUpper(name)
+	key = strings.Replace(key, ".", "_", -1)
+	return os.Getenv(key)
 }
 
 func (cfg *Config) Int(name string, value int) int {
-  n := cfg.Get(name)
-  return intVal(n, value)
+	n := cfg.Get(name)
+	return intVal(n, value)
 }
 
 func intVal(n string, value int) int {
-  var intVal int
-  if len(n) != 0 {
-    if val, err := strconv.Atoi(n); err != nil {
-      intVal = value
-    } else {
-      intVal = val
-    }
-  } else {
-    intVal = value
-  }
+	var intVal int
+	if len(n) != 0 {
+		if val, err := strconv.Atoi(n); err != nil {
+			intVal = value
+		} else {
+			intVal = val
+		}
+	} else {
+		intVal = value
+	}
 
-  return intVal
+	return intVal
 }
 
 func (cfg *Config) String(name, value string) string {
-  strVal := cfg.Get(name)
+	strVal := cfg.Get(name)
 
-  if len(strVal) != 0 {
-    strVal = value
-  }
+	if len(strVal) != 0 {
+		strVal = value
+	}
 
-  return strVal
+	return strVal
 }
 
 func New() *Config {
-  return &Config{}
+	return &Config{}
 }
