@@ -11,9 +11,9 @@ and converts all `.` to `_`.
 ```go
 config := gestalt.New()
 
-# Lookup for PORT
-port := config.Int('port', 8080)
+// Lookup for PORT
+port := config.Int("port", 8080)
 
-# Lookup for MONGO_URI
-mongo_uri := config.String('mongo.uri', 'localhost:27072')
+// Lookup for MONGO_URI
+mongo_uri := config.String("mongo.uri", "localhost:27072")
 ```
