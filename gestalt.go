@@ -9,7 +9,7 @@ import (
 type Config struct {
 }
 
-func (cfg *Config) Get(name string) string {
+func (cfg *Config) get(name string) string {
 	key := strings.ToUpper(name)
 	key = strings.Replace(key, ".", "_", -1)
 	return os.Getenv(key)
@@ -18,7 +18,7 @@ func (cfg *Config) Get(name string) string {
 // Bool defines a bool config with specified name and default value.
 // Config value can been "true", "false", "1", "0"
 func (cfg *Config) Bool(name string, value bool) bool {
-  n := cfg.Get(name)
+  n := cfg.get(name)
 
   switch n {
     case "true", "1":
@@ -32,7 +32,7 @@ func (cfg *Config) Bool(name string, value bool) bool {
 
 // Int defines an integer config with specificed name and default value.
 func (cfg *Config) Int(name string, value int) int {
-	n := cfg.Get(name)
+	n := cfg.get(name)
 
 	var intVal int
 	if len(n) != 0 {
@@ -49,7 +49,7 @@ func (cfg *Config) Int(name string, value int) int {
 }
 
 func (cfg *Config) String(name, value string) string {
-	strVal := cfg.Get(name)
+	strVal := cfg.get(name)
 
 	if len(strVal) != 0 {
 		strVal = value
