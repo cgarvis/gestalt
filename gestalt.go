@@ -15,12 +15,23 @@ func (cfg *Config) Get(name string) string {
 	return os.Getenv(key)
 }
 
-func (cfg *Config) Int(name string, value int) int {
-	n := cfg.Get(name)
-	return intVal(n, value)
+// Bool defines a bool config with specified name and default value.
+func (cfg *Config) Bool(name string, value bool) bool {
+  n := cfg.Get(name)
+
+  switch n {
+    case "true", "1":
+      return true
+    case "false", "0":
+      return false
+  }
+
+  return value
 }
 
-func intVal(n string, value int) int {
+func (cfg *Config) Int(name string, value int) int {
+	n := cfg.Get(name)
+
 	var intVal int
 	if len(n) != 0 {
 		if val, err := strconv.Atoi(n); err != nil {
