@@ -48,6 +48,7 @@ func (cfg *Config) Int(name string, value int) int {
 	return intVal
 }
 
+// String defines a string config with specified name and default value.
 func (cfg *Config) String(name, value string) string {
 	strVal := cfg.get(name)
 
