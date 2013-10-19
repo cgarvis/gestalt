@@ -16,6 +16,7 @@ func (cfg *Config) Get(name string) string {
 }
 
 // Bool defines a bool config with specified name and default value.
+// Config value can been "true", "false", "1", "0"
 func (cfg *Config) Bool(name string, value bool) bool {
   n := cfg.Get(name)
 
@@ -29,6 +30,7 @@ func (cfg *Config) Bool(name string, value bool) bool {
   return value
 }
 
+// Int defines an integer config with specificed name and default value.
 func (cfg *Config) Int(name string, value int) int {
 	n := cfg.Get(name)
 
