@@ -2,6 +2,10 @@
 
 Configuration for Golang
 
+## Documentation
+
+Read the docs at [http://godoc.org/github.com/cgarvis/gestalt][godoc]
+
 ## Usage
 
 Defaults to looking for the environment varable with the same name.
@@ -17,3 +21,5 @@ port := config.Int("port", 8080)
 // Lookup for MONGO_URI
 mongo_uri := config.String("mongo.uri", "localhost:27072")
 ```
+
+[godoc]: http://godoc.org/github.com/cgarvis/gestalt
