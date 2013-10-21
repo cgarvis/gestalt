@@ -30,16 +30,32 @@ func (cfg *Config) Bool(name string, value bool) bool {
   return value
 }
 
-// Int defines an integer config with specificed name and default value.
+// Float64 defines a float64 config with specified name and default value.
+func (cfg *Config) Float64(name string, value float64) float64 {
+  n := cfg.get(name)
+
+  var floatVal float64
+  var err error
+  if len(n) != 0 {
+    if floatVal, err = strconv.ParseFloat(n, 64); err != nil {
+      floatVal = value
+    }
+  } else {
+    floatVal = value
+  }
+
+  return floatVal
+}
+
+// Int defines an integer config with specified name and default value.
 func (cfg *Config) Int(name string, value int) int {
 	n := cfg.get(name)
 
 	var intVal int
+	var err error
 	if len(n) != 0 {
-		if val, err := strconv.Atoi(n); err != nil {
+		if intVal, err = strconv.Atoi(n); err != nil {
 			intVal = value
-		} else {
-			intVal = val
 		}
 	} else {
 		intVal = value
