@@ -64,6 +64,23 @@ func (cfg *Config) Int(name string, value int) int {
 	return intVal
 }
 
+// Int64 defines an int64 config with specified name and default value.
+func  (cfg *Config) Int64(name string, value int64) int64 {
+	n := cfg.get(name)
+
+	var intVal int64
+	var err error
+	if len(n) != 0 {
+		if intVal, err = strconv.ParseInt(n, 0, 64); err != nil {
+			intVal = value
+		}
+	} else {
+		intVal = value
+	}
+
+	return intVal
+}
+
 // String defines a string config with specified name and default value.
 func (cfg *Config) String(name, value string) string {
 	strVal := cfg.get(name)
