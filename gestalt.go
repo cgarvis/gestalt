@@ -36,7 +36,7 @@ func (cfg *Config) Float64(name string, value float64) float64 {
 
   var floatVal float64
   var err error
-  if len(n) == 0 {
+  if len(n) != 0 {
     if floatVal, err = strconv.ParseFloat(n, 64); err != nil {
       floatVal = value
     }
@@ -53,7 +53,7 @@ func (cfg *Config) Int(name string, value int) int {
 
 	var intVal int
 	var err error
-	if len(n) == 0 {
+	if len(n) != 0 {
 		if intVal, err = strconv.Atoi(n); err != nil {
 			intVal = value
 		}
